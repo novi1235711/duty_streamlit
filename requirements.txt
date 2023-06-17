@@ -3,3 +3,5 @@ gspread-dataframe==3.3.0
 pandas
 google-auth
 streamlit==1.12.0
+datetime
+calendar
