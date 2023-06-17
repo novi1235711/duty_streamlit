@@ -67,6 +67,7 @@ def page_home():
     """
     st.write(df_A1st)
     st.write(df_A2nd)
+    print(pd.__version__)
     
 
 def page_form1():
