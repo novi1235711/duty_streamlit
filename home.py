@@ -5,6 +5,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 from gspread_dataframe import set_with_dataframe
 import calendar
+from pytz import timezone
 
 scopes = [
     'https://www.googleapis.com/auth/spreadsheets',
@@ -41,9 +42,10 @@ df_A2nd = pd.DataFrame(A2ndlist[1:],columns=A2ndlist[0])
 hds_arr =  holidayslist[1:]
 namelist1 = df_names['1年目名簿']
 namelist2 = df_names['2年目名簿']
-now = datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')
-year = int(datetime.datetime.now().strftime('%Y'))
-month = int(datetime.datetime.now().strftime('%m'))+1
+dtnow = datetime.datetime.now()
+now = dtnow.astimezone(timezone('Asia/Tokyo')).strftime('%Y/%m/%d %H:%M:%S')
+year = int(dtnow.strftime('%Y'))
+month = int(dtnow.strftime('%m'))+1
 if month == 13:
     year = year+1
     month = 1
@@ -67,7 +69,6 @@ def page_home():
     """
     st.write(df_A1st)
     st.write(df_A2nd)
-    print(pd.__version__)
     
 
 def page_form1():
