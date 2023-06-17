@@ -1,4 +1,5 @@
 gspread==5.9.0
 gspread-dataframe==3.3.0
 pandas
+google.oauth2.service_account
 streamlit==1.12.0
