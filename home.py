@@ -158,11 +158,13 @@ def page_form1():
             st.write('You selected: ', NG_list1, NG_list2)
             st.write("上記の内容で提出しました")
             df_A1st = pd.DataFrame(A1stlist[1:],columns=A1stlist[0])
-            nd = {'Time':now,'Name':yourname,'Comment':comment,'NG1':NG_list1,'NG2':NG_list2}
+            data1 = [[now,yourname,comment,NG_list1,NG_list2]]
+            columns1 = ['Time','Name','Comment','NG1','NG2']
+            nd = pd.DataFrame(data=data1,columns=columns1)
             df_A1st = df_A1st[df_A1st['Name']!=yourname]
-            df_A1st = df_A1st.append(nd,ignore_index=True)
+            df_A1st = pd.concat([df_A1st,nd],axis=0,)
             set_with_dataframe(A1st,df_A1st,row=1,col=1)
-
+            st.write(df_A1st)
     
 
 def page_form2():
@@ -252,10 +254,13 @@ def page_form2():
             st.write('You selected: ', NG_list1, NG_list2)
             st.write("上記の内容で提出しました")
             df_A2nd = pd.DataFrame(A2ndlist[1:],columns=A2ndlist[0])
-            nd = {'Time':now,'Name':yourname,'Comment':comment,'NG1':NG_list1,'NG2':NG_list2}
+            data2 = [[now,yourname,comment,NG_list1,NG_list2]]
+            columns2 = ['Time','Name','Comment','NG1','NG2']
+            nd = pd.DataFrame(data=data2,columns=columns2)
             df_A2nd = df_A2nd[df_A2nd['Name']!=yourname]
-            df_A2nd = df_A2nd.append(nd,ignore_index=True)
+            df_A2nd = pd.concat([df_A2nd,nd],axis=0,)
             set_with_dataframe(A2nd,df_A2nd,row=1,col=1)
+            st.write(df_A2nd)
 
 def page_manager():
     st.title('管理者ページ')
