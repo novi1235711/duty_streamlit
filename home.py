@@ -55,17 +55,19 @@ Table2_link = '[2年目振り分け表](https://docs.google.com/spreadsheets/d/1
 
 def page_home():
     st.title('Home')
-    st.markdown(Table1_link, unsafe_allow_html=True)
-    st.markdown(Table2_link, unsafe_allow_html=True)
     """
     ##### 回答フォームは左上のメニューから該当のフォームで回答してください。
-    ##### ＊くれぐれも、他人の名前で回答しないようにお願いします。（上書きされます）
+    ##### (スマホで回答する方は少し上にスクロールして出てくる＞をタップして)
+    #### ＊くれぐれも、絶対に！他人の名前で回答しないようにお願いします。（上書きされます）
     #####
     ##### 日当直決め担当者は以下の要領で行ってください。
     ##### 1．左上のメニューから管理者ページにアクセスし、祝日の登録、名簿の確認を行って下さい。
-    ##### 2．上記のリンクから振り分け表にアクセスし、表を完成させてください。
-    
-    ### ＊回答状況
+    ##### 2．下記のリンクから振り分け表にアクセスし、表を完成させてください。
+    """
+    st.markdown(Table1_link, unsafe_allow_html=True)
+    st.markdown(Table2_link, unsafe_allow_html=True)
+    """
+    ### ＊回答状況＊
     """
     st.write(df_A1st)
     st.write(df_A2nd)
