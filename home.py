@@ -151,6 +151,9 @@ def page_form1():
                 if checked2:
                     NG_list2.append(str(y))
 
+        demandsA1 = st.multiselect("当直の希望日があれば入力ください（参考程度です）",new_cal_arr)
+        demandsB1 = st.multiselect("日直の希望日があれば入力ください（参考程度です）",new_hds_arr)
+
         # Every form must have a submit button.
         submitted = st.form_submit_button("Submit")
         if submitted:
@@ -160,8 +163,8 @@ def page_form1():
             st.write('You selected: ', NG_list1, NG_list2)
             st.write("上記の内容で提出しました")
             df_A1st = pd.DataFrame(A1stlist[1:],columns=A1stlist[0])
-            data1 = [[now,yourname,comment,NG_list1,NG_list2]]
-            columns1 = ['Time','Name','Comment','NG1','NG2']
+            data1 = [[now,yourname,comment,NG_list1,NG_list2,demandsA1,demandsB1]]
+            columns1 = ['Time','Name','Comment','NG1','NG2','OK1','OK2']
             nd = pd.DataFrame(data=data1,columns=columns1)
             df_A1st = df_A1st[df_A1st['Name']!=yourname]
             df_A1st = pd.concat([df_A1st,nd],axis=0,)
@@ -247,6 +250,9 @@ def page_form2():
                 if checked2:
                     NG_list2.append(str(y))
 
+        demandsA2 = st.multiselect("当直の希望日があれば入力ください（参考程度です）",new_cal_arr)
+        demandsB2 = st.multiselect("日直の希望日があれば入力ください（参考程度です）",new_hds_arr)
+
         # Every form must have a submit button.
         submitted = st.form_submit_button("Submit")
         if submitted:
@@ -256,8 +262,8 @@ def page_form2():
             st.write('You selected: ', NG_list1, NG_list2)
             st.write("上記の内容で提出しました")
             df_A2nd = pd.DataFrame(A2ndlist[1:],columns=A2ndlist[0])
-            data2 = [[now,yourname,comment,NG_list1,NG_list2]]
-            columns2 = ['Time','Name','Comment','NG1','NG2']
+            data2 = [[now,yourname,comment,NG_list1,NG_list2,demandsA2,demandsB2]]
+            columns2 = ['Time','Name','Comment','NG1','NG2','OK1','OK2']
             nd = pd.DataFrame(data=data2,columns=columns2)
             df_A2nd = df_A2nd[df_A2nd['Name']!=yourname]
             df_A2nd = pd.concat([df_A2nd,nd],axis=0,)
